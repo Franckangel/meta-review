@@ -1,11 +1,11 @@
 package com.example.metareviewjava.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Film implements Serializable {
 
@@ -18,6 +18,8 @@ public class Film implements Serializable {
     private String genre;
     private String date;
     private String image;
+    @OneToMany
+    private List<Review> review;
 
     public Film(){
 
@@ -30,6 +32,7 @@ public class Film implements Serializable {
         this.genre = genre;
         this.date = date;
         this.image = image;
+        this.review = new ArrayList<Review>();
     }
 
     public int getId() {
