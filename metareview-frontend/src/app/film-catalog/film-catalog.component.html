@@ -1,0 +1,33 @@
+<nav class="navbar navbar-light justify-content-center" style="background-color: #e3f2fd;">
+  <div class="btn-group-toggle" data-toggle="buttons">
+
+      <button class="btn btn-info" type="submit" (click)="filter = ''">All</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Action'">Action</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Adventure'">Adventure</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Biography'">Biography</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Comedy'">Comedy</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Crime'">Crime</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Drama'">Drama</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Romance'">Romance</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Sci-Fi'">Sci-Fi</button>
+      <button class="btn btn-info" type="submit" (click)="filter = 'Fantasy'">Fantasy</button>
+
+
+  </div>
+</nav>
+<!--History
+
+Sci-Fi
+Fantasy
+Mystery
+Thriller
+War-->
+<div class="container">
+<ul class="card-container">
+  <div class="card-deck">
+    <li *ngFor="let currentFilm of getFilteredFilm()" class="card-item">
+      <app-film-details [film]="currentFilm"></app-film-details>
+    </li>
+  </div>
+</ul>
+</div>

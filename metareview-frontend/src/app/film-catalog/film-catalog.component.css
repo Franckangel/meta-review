@@ -1,0 +1,25 @@
+.btn-group-toggle button {
+  margin-right: 5px; /* Adjust the spacing as needed */
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container {
+  margin-top: 30px;
+}
+/*
+.card-item {
+  flex: 1 1 30%;
+  margin-bottom: 20px;
+}*/
+
+.card-item {
+
+  margin-bottom: 15px; /* Adjust bottom margin as needed */
+  margin-left: 3px; /* Adjust left margin as needed */
+  margin-right: 3px; /* Adjust right margin as needed */
+}
