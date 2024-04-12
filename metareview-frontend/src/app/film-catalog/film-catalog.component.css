@@ -23,3 +23,7 @@
   margin-left: 3px; /* Adjust left margin as needed */
   margin-right: 3px; /* Adjust right margin as needed */
 }
+
+.custom-list {
+  list-style-type: none;
+}
