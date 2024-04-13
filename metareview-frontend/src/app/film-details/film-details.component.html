@@ -4,7 +4,7 @@
     <h5 class="card-title">{{film?.name}}</h5>
     <p class="card-text">{{film?.synopsis}}</p>
     <p class="card-text" style="font-style: oblique; font-weight: bold;"><span >Genre :</span>{{film?.genre}}</p>
-    <a href="#" class="btn btn-primary">Add Review</a>
+    <a (click)="addReviewClicked(film)" class="btn btn-primary">Add Review</a>
   </div>
 
 
