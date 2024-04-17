@@ -7,16 +7,13 @@ export class Film {
   release_date: string;
   image: string;
 
-  constructor(){
+  constructor() {
     this.id = 0;
-    this.name = "";
-    this.synopsis = "";
-    this.director = "";
-    this.genre = "";
-    this.release_date = "";
-    this.image = "";
+    this.name = '';
+    this.synopsis = '';
+    this.director = '';
+    this.genre = '';
+    this.release_date = '';
+    this.image = '';
   }
-
-
-
 }

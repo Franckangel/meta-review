@@ -1,32 +1,114 @@
 <div class="container">
   <div class="row m-4 rounded">
-    <div class="col rounded" style="width: 200px; height: 400px;">
-      <img  class="rounded w-100 h-100" [src]="getFilmUrl(film)" alt="Card image">
+    <div class="col rounded" style="width: 200px; height: 400px">
+      <img
+        class="rounded w-100 h-100"
+        [src]="getFilmUrl(parentFilm)"
+        alt="Card image"
+      />
     </div>
-    <div class="col rounded d-flex flex-column justify-content-between pt-2" style="background-color: aliceblue; width: 200px; height: 400px;">
-      <h5 class="card-title h1">{{film?.name}}</h5>
-      <p class="lead h2">{{film?.synopsis}}</p>
-      <button type="button" class="btn btn-primary btn-lg btn-block mb-2" data-toggle="modal" data-target="#exampleModal">Add Review</button>
-    </div>
-  </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">What do you think?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input class="w-100 h-100">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div
+      class="col rounded d-flex flex-column justify-content-between pt-2"
+      style="background-color: aliceblue; width: 200px; height: 400px"
+    >
+      <h5 class="card-title h1">{{ parentFilm?.name }}</h5>
+      <p class="lead h2">{{ parentFilm?.synopsis }}</p>
+      <button
+        type="button"
+        class="btn btn-primary btn-lg btn-block mb-2"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Add Review
+      </button>
     </div>
   </div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <h5 class="modal-title">Score:</h5>
+            <input
+              type="number"
+              [(ngModel)]="score"
+              min="1"
+              max="10"
+              (input)="updateProgressBar()"
+            />
+          </div>
+        </div>
+        <div class="progress m-3">
+          <div
+            id="progressBar"
+            class="progress-bar progress-bar-striped"
+            role="progressbar"
+            [style.width.%]="progressWidth"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Add my review for
+            <span style="font-weight: bold; font-style: oblique">{{
+              parentFilm?.name
+            }}</span>
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input class="w-100 h-100" [(ngModel)]="textArea" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="createReview()"
+          >
+            Save Review
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul
+    class="custom-list"
+    *ngIf="getFilteredReview().length > 0; else noReviews"
+  >
+    <li *ngFor="let parentReview of getFilteredReview()">
+      <app-review-details
+        [review]="parentReview"
+        [film]="parentFilm"
+        [filmGotReview]="filmGotReview"
+      ></app-review-details>
+    </li>
+  </ul>
 </div>
-</div>
+<ng-template #noReviews>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4" style="display: flex; justify-content: center">
+        No reviews for now! mr. {{ user?.pseudo }}
+      </h1>
+    </div>
+  </div>
+</ng-template>

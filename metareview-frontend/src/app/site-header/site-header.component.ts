@@ -8,8 +8,6 @@ import { HomeComponent } from '../home/home.component';
   standalone: true,
   imports: [RouterOutlet, RouterLink, FilmCatalogComponent, HomeComponent],
   templateUrl: './site-header.component.html',
-  styleUrl: './site-header.component.css'
+  styleUrl: './site-header.component.css',
 })
-export class SiteHeaderComponent {
-
-}
+export class SiteHeaderComponent {}
