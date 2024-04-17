@@ -16,7 +16,7 @@ public class Film implements Serializable {
     private String synopsis;
     private String director;
     private String genre;
-    private String date;
+    private String release_date;
     private String image;
     @OneToMany
     private List<Review> review;
@@ -25,12 +25,12 @@ public class Film implements Serializable {
 
     }
 
-    public Film(String name, String synopsis, String director, String genre, String date, String image){
+    public Film(String name, String synopsis, String director, String genre, String release_date, String image){
         this.name = name;
         this.synopsis =synopsis;
         this.director = director;
         this.genre = genre;
-        this.date = date;
+        this.release_date = release_date;
         this.image = image;
         this.review = new ArrayList<Review>();
     }
@@ -76,11 +76,11 @@ public class Film implements Serializable {
     }
 
     public String getDate() {
-        return date;
+        return release_date;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(String release_date) {
+        this.release_date = release_date;
     }
 
     public String getImage() {

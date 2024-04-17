@@ -7,10 +7,10 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User implements Serializable {
 
     @Id
-    
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;

@@ -4,7 +4,7 @@ export class Film {
   synopsis: string;
   director: string;
   genre: string;
-  date: string;
+  release_date: string;
   image: string;
 
   constructor(){
@@ -13,7 +13,7 @@ export class Film {
     this.synopsis = "";
     this.director = "";
     this.genre = "";
-    this.date = "";
+    this.release_date = "";
     this.image = "";
   }
 

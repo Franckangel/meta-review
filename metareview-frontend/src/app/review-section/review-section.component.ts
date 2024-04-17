@@ -29,12 +29,23 @@ export class ReviewSectionComponent {
       }
       if (this.filmId) {
         // Fetch film details using film ID
-        this.filmService.getFilmById(this.filmId).subscribe(film => {
+        //this.filmService.getFilmById(this.filmId).subscribe(film => {  #Test methods
+        this.filmService.get(this.filmId).subscribe(film => {
           this.film = film;
         });
       }
     });
   }
+
+
+  getFilmUrl(film: Film | undefined): string {
+    // Check if film is defined before accessing its properties
+    if (film) {
+      return film.image ?? '';
+    }
+    return ''; // Return a default value if film is undefined
+  }
+
 }
 
 

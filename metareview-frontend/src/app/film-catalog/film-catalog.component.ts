@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FilmService } from '../services/film.service';
 import { FilmDetailsComponent } from "../film-details/film-details.component";
 import { CommonModule } from '@angular/common';
+import { Film } from '../models/film';
 
 @Component({
     selector: 'app-film-catalog',
@@ -11,11 +12,11 @@ import { CommonModule } from '@angular/common';
     imports: [FilmDetailsComponent, CommonModule]
 })
 export class FilmCatalogComponent {
-  films: any;
+  films: Film[] = [];
   filter: string = "";
 
   constructor(private filmService : FilmService){
-      this.filmService.getAllFilms().subscribe(films => {
+      this.filmService.getAll().subscribe((films : Film[])=> {
         this.films = films;
       });
   }

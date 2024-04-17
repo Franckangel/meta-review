@@ -2,6 +2,7 @@ package com.example.metareviewjava.entities;
 
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.Reference;
 
 import java.io.Serializable;
 
@@ -9,34 +10,48 @@ import java.io.Serializable;
 public class Review implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int id ;
-    public String textArea;
-    @OneToOne
-    public Film film;
-    public int score;
+    private int id ;
+    private String textArea;
+    private int score;
+
+    @ManyToOne
+    @JoinColumn(name = "film_id")
+    private Film film;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Review(){
 
     }
 
-    public Review(int id, String textArea, int score, Film film){
-        this.id = id;
+    public Review(String textArea, int score){
+        this.textArea = textArea;
+        this.score = score;
+    }
+    public Review(String textArea, int score, Film film, User user){
         this.textArea = textArea;
         this.score = score;
         this.film = film;
-                
+        this.user = user;
     }
+
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getTextArea() {
         return textArea;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setTextArea(String textArea) {
