@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
 import { Film } from '../models/film';
 import { Review } from '../models/review';
 import { ActivatedRoute } from '@angular/router';
@@ -27,6 +27,7 @@ export class ReviewSectionComponent {
   addReview!: Omit<Review, 'id'>;
   user: User | undefined;
   filmGotReview: boolean = false;
+  @ViewChild('exampleModal') modal: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -97,7 +98,6 @@ export class ReviewSectionComponent {
       };
     }
     this.reviewService.Create(this.addReview).subscribe(() => {
-      alert('Review Added Successfully');
       this.reviewList.push(this.addReview);
       this.checkIfFilmHasReviews();
       //window.location.reload();
